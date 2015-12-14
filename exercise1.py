@@ -49,6 +49,7 @@ class UnknownAttributeException(Exception):
 
 
 def selection(t, f):
+    
     """
     Perform select operation on table t that satisfy condition f.
     Example:
@@ -59,7 +60,19 @@ def selection(t, f):
     > select(R, f)
     [["A", "B", "C"], [4, 5, 6]]
     """
+    select_table = []
 
+    for row in t:
+        # Check table row satisfies function then add to created table
+        if f(row) is True:
+            select_table.append(row)
+        else:
+            print "None"
+            continue
+
+    return select_table
+
+# Selection (STUDENTS, filter_students)
 
 def judge_students(row):
     """
