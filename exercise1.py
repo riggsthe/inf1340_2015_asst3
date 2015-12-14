@@ -19,6 +19,15 @@ STUDENTS = [["First Name", "Surname", "IQ", "GPA"],
            ["Jayne", "Cobb", 55, 1.1],
            ["Inara", "Serra", 158, 4.0]]
 
+R1 = [["Student", "Class"],
+    ["Zoe", "Programming"],
+    ["Jayne", "Web Design"],
+    ["Inara", "Programming"]]
+
+R2 =  [["Class", "Professor"],
+    ["Programming", "Sim"],
+    ["Web Design", "Yu"]]
+
 
 #####################
 # HELPER FUNCTIONS ##
