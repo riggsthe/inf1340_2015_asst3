@@ -46,7 +46,7 @@ def is_equal(t1, t2):
 #####################
 # FILTER FUNCTIONS ##
 #####################
-def filter_employees(row):
+def filter_students(row):
     """
     Check if employee represented by row
     is AT LEAST 30 years old and makes
@@ -67,11 +67,11 @@ def test_selection():
     Test select operation.
     """
 
-    result = [["Surname", "FirstName", "Age", "Salary"],
+    result = [["FirstName", "Surname", "IQ", "GPA"],
               ["Verdi", "Nico", 36, 4500],
               ["Smith", "Mark", 40, 3900]]
 
-    assert is_equal(result, selection(EMPLOYEES, filter_employees))
+    assert is_equal(result, selection(STUDENTS, filter_students))
 
 
 def test_projection():
@@ -79,13 +79,13 @@ def test_projection():
     Test projection operation.
     """
 
-    result = [["Surname", "FirstName"],
+    result = [["FirstName", "Surname"],
               ["Smith", "Mary"],
               ["Black", "Lucy"],
               ["Verdi", "Nico"],
               ["Smith", "Mark"]]
 
-    assert is_equal(result, projection(EMPLOYEES, ["Surname", "FirstName"]))
+    assert is_equal(result, projection(STUDENTS, ["FirstName", "Surname"]))
 
 
 def test_cross_product():
