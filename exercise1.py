@@ -13,11 +13,11 @@ __license__ = "MIT License"
 ###  TABLES      ###
 ###################
 STUDENTS = [["First Name", "Surname", "IQ", "GPA"],
-           ["Hogan", "Washburne", 94, 3.2],
+           ["Hoban", "Washburne", 94, 3.2],
            ["Zoe", "Washburne", 110, 3.5],
            ["Malcolm", "Reynolds", 81, 2.6],
            ["Jayne", "Cobb", 55, 1.1],
-           ["Inara", "Sera", 158, 4.0]]
+           ["Inara", "Serra", 158, 4.0]]
 
 
 #####################
