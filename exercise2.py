@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 
 """ Assignment 3, Exercise 2, INF1340, Fall, 2015. Kanadia
-
 Computer-based immigration office for Kanadia
-
 """
 
 __author__ = 'Susan Sim'
@@ -40,7 +38,6 @@ COUNTRIES = None
 def is_more_than_x_years_ago(x, date_string):
     """
     Check if date is less than x years ago.
-
     :param x: int representing years
     :param date_string: a date string in format "YYYY-mm-dd"
     :return: True if date is less than x years ago; False otherwise.
@@ -56,7 +53,6 @@ def is_more_than_x_years_ago(x, date_string):
 def decide(input_file, countries_file):
     """
     Decides whether a traveller's entry into Kanadia should be accepted
-
     :param input_file: The name of a JSON formatted file that contains
         cases to decide
     :param countries_file: The name of a JSON formatted file that contains
@@ -83,7 +79,6 @@ def valid_visa_format(visa_code):
     Checks whether a visa code is two groups of five alphanumeric characters
     :param visa_code: alphanumeric string
     :return: Boolean; True if the format is valid, False otherwise
-
     """
 
 

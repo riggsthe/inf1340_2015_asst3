@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 
 """ Assignment 3, Exercise 1, INF1340, Fall, 2015. DBMS
-
 Test module for exercise3.py
-
 """
 
 __author__ = 'Susan Sim'

@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 """ Assignment 3, Exercise 2, INF1340, Fall, 2015. DBMS
-
 This module performs table operations on database tables
 implemented as lists of lists. """
 
@@ -42,7 +41,6 @@ class UnknownAttributeException(Exception):
 def selection(t, f):
     """
     Perform select operation on table t that satisfy condition f.
-
     Example:
     > R = [["A", "B", "C"], [1, 2, 3], [4, 5, 6]]
     ># Define function f that returns True iff
@@ -50,7 +48,6 @@ def selection(t, f):
     > def f(row): row[-1] > 3
     > select(R, f)
     [["A", "B", "C"], [4, 5, 6]]
-
     """
 
     return []
@@ -60,12 +57,10 @@ def projection(t, r):
     """
     Perform projection operation on table t
     using the attributes subset r.
-
     Example:
     > R = [["A", "B", "C"], [1, 2, 3], [4, 5, 6]]
     > projection(R, ["A", "C"])
     [["A", "C"], [1, 3], [4, 6]]
-
     """
 
     return []
@@ -74,13 +69,10 @@ def projection(t, r):
 def cross_product(t1, t2):
     """
     Return the cross-product of tables t1 and t2.
-
     Example:
     > R1 = [["A", "B"], [1,2], [3,4]]
     > R2 = [["C", "D"], [5,6]]
     [["A", "B", "C", "D"], [1, 2, 5, 6], [3, 4, 5, 6]]
-
-
     """
 
     return []
