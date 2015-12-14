@@ -48,6 +48,19 @@ class UnknownAttributeException(Exception):
     pass
 
 
+def filter_students(row):
+    """
+    check if student represent by row has an IQ
+    of at least 90 and a GPA of more than 3.4
+    :param row: A List in the format:
+    [{First name}, {Surname}, {IQ}, {GPA}]
+    :return: True if the row satisfies the
+    condition.
+    return row[-2] >= 90 and row[-1] > 3.4
+    """
+    return row[-2] >= 90 and row[-1] > 3.4
+
+
 def selection(t, f):
     
     """
@@ -73,19 +86,6 @@ def selection(t, f):
     return select_table
 
 # Selection (STUDENTS, filter_students)
-
-def judge_students(row):
-    """
-    Check if student represented by row
-    has an IQ of AT LEAST 90 and a GPA of
-    MORE THAN 3.4.
-    :param row: A List in the format:
-    [{First name}, {Surname}, {IQ}, {GPA}]
-    :return: True if the row satisfies the condition.
-    return row[-2] >= 90 and row[-1] > 3.4
-    """
-
-    return []
 
 
 def projection(t, r):
