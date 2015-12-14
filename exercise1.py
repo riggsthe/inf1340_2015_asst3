@@ -12,7 +12,7 @@ __license__ = "MIT License"
 ####################
 ###  TABLES      ###
 ###################
-STUDENTS = [["First Name", "Surname", "IQ", "GPA"],
+STUDENTS = [["FirstName", "Surname", "IQ", "GPA"],
            ["Hoban", "Washburne", 94, 3.2],
            ["Zoe", "Washburne", 110, 3.5],
            ["Malcolm", "Reynolds", 81, 2.6],
@@ -111,8 +111,8 @@ def projection(t, r):
 
     for item in range(len(r)):
 
-    return project_table 
-# Projection (STUDENTS, ["First Name", "Surname"])
+    return project_table
+# Projection (STUDENTS, ["FirstName", "Surname"])
 
 def cross_product(t1, t2):
     """
