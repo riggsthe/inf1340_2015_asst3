@@ -106,9 +106,13 @@ def projection(t, r):
     > projection(R, ["A", "C"])
     [["A", "C"], [1, 3], [4, 6]]
     """
+    project_table = []
+    location = []
 
-    return []
+    for item in range(len(r)):
 
+    return project_table 
+# Projection (STUDENTS, ["First Name", "Surname"])
 
 def cross_product(t1, t2):
     """
