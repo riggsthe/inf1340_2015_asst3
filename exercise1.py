@@ -108,11 +108,30 @@ def projection(t, r):
     """
     project_table = []
     location = []
-
+    # find attribute location
     for item in range(len(r)):
+        search = r[item]
+        for i in range(len(t[0])):
+            title = t[0][i]
+            if search == title:
+                location.append(i)
+    if len(location) == 0:
+        raise UnknownAttributeException
 
-    return project_table 
-# Projection (STUDENTS, ["First Name", "Surname"])
+    # Now create a new array for each line on the table
+    for i in range(len(t)):
+        single_lines =[]
+        line = t[i]
+        for j in range(len(location)):
+            index_local = location[j]
+            info_to_grab = line[index_local]
+            single_lines.append(info_to_grab)
+        project_table.append(single_lines)
+
+    return project_table
+
+    # Projection (STUDENTS, ["First Name", "Surname"])
+    
 
 def cross_product(t1, t2):
     """
