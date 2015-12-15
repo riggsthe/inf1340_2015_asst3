@@ -17,13 +17,14 @@ from exercise1 import selection, projection, cross_product
 ###########
 
 
-
 STUDENTS = [["FirstName", "Surname", "IQ", "GPA"],
              ["Hoban", "Washburne", 94, 3.2],
              ["Zoe", "Washburne", 110, 3.5],
              ["Malcolm", "Reynolds", 81, 2.6],
              ["Jayne", "Cobb", 55, 1.1],
              ["Inara", "Serra", 158, 4.0]]
+
+STUDENTS_EMPTY = []
 
 R1 = [["Student", "Class"],
       ["Zoe", "Programming"],
