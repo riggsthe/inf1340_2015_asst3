@@ -98,13 +98,11 @@ def test_project():
     assert is_equal(result, project(STUDENTS, ["FirstName", "Surname"]))
 
 
-def test_project_unknown_attribute_exception():
-
-    try:
-        project(STUDENTS, ["Does_Not_Exist"])
-    except UnknownAttributeException:
-        assert True
-
+def test_project_unknown_attribute():
+    """
+    Test if attributes are not found on table.
+    """
+    assert project(STUDENTS, ["Does Not Exist"]) == AttributeError
 
 
 def test_cross_product():
