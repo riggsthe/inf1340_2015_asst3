@@ -148,13 +148,13 @@ def cross_product(t1, t2):
 
     else:
 
-    # Combine the headings of the table
-    column_heads = t1[0]+t2[0]
-    cross_table = []
+        # Combine the headings of the table
+        column_heads = t1[0]+t2[0]
+        cross_table = []
 
-    # Remove table headings
-    del t1[0]
-    del t2[0]
+        # Remove table headings
+        del t1[0]
+        del t2[0]
 
-    return cross_table
+        return cross_table
 
