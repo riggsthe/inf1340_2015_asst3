@@ -67,23 +67,24 @@ def filter_students(row):
 
 def test_selection():
     """
-    Test select operation.
+    Test the selection operation.
     """
 
     result = [["FirstName", "Surname", "IQ", "GPA"],
-              ["Jayne", "Cobb", 55, 1.1],
+              ["Zoe", "Washburne", 110, 3.5],
               ["Inara", "Serra", 158, 4.0]]
 
     assert is_equal(result, selection(STUDENTS, filter_students))
 
+
 def test_selection_empty():
     assert selection(STUDENTS_EMPTY, filter_students) is\
-None
+        None
 
 
 def test_project():
     """
-    Test projection operation.
+    Test the projection operation.
     """
 
     result = [["FirstName", "Surname"],
