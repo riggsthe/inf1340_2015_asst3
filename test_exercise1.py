@@ -24,7 +24,7 @@ STUDENTS = [["FirstName", "Surname", "IQ", "GPA"],
              ["Jayne", "Cobb", 55, 1.1],
              ["Inara", "Serra", 158, 4.0]]
 
-STUDENTS_EMPTY = []
+EMPTY_LIST = []
 
 R1 = [["Student", "Class"],
       ["Zoe", "Programming"],
@@ -76,6 +76,14 @@ def test_selection():
               ["Inara", "Serra", 158, 4.0]]
 
     assert is_equal(result, selection(STUDENTS, filter_students))
+
+
+def test_empty_list_selection():
+    """
+    Test selection operation when using a list that is empty.
+    """
+
+    assert selection(EMPTY_LIST, filter_students) is None
 
 
 def test_project():
