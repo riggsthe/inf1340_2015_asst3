@@ -108,6 +108,8 @@ def test_empty_list_projection():
     Test projection operation when using a list that is empty.
     """
 
+    assert project(EMPTY_LIST, ["Surname"]) is None
+
 
 def test_wrong_column_projection():
     """
