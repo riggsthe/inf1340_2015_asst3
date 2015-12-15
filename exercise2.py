@@ -59,8 +59,13 @@ def is_more_than_x_years_ago(x, date_string):
     now = datetime.datetime.now()
     x_years_ago = now.replace(year=now.year - x)
     date = datetime.datetime.strptime(date_string, '%Y-%m-%d')
-
     return (date - x_years_ago).total_seconds() < 0
+
+def visa_expiration(date_string):
+    now = datetime.datetime.now()
+    two = now.replace(year=now.year - 2)
+    date = datetime.datetime.strptime(date_string, '%Y-%m-%d')
+    return (date - two).total_seconds() < 0
 
 
 def valid_passport_format(passport_number):
@@ -122,6 +127,8 @@ def decide(input_file, countries_file):
             print ("Accept")
         else:
             print ("Reject")
+
+
 
 
 decide(input_file, countries_file)
