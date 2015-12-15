@@ -37,13 +37,11 @@ countries_file = 'json/country_record.json'
 with open(input_file,'r') as visitor_reader:
     visitor_info = visitor_reader.read()
     visitor_record = json.loads(visitor_info)
-print json.dumps(visitor_record, indent=1)
 
 
 with open(countries_file,'r') as country_reader:
     country_info = country_reader.read()
     country_record = json.loads(country_info)
-print json.dumps(country_record, indent=1)
 
 
 
@@ -63,21 +61,6 @@ def is_more_than_x_years_ago(x, date_string):
     date = datetime.datetime.strptime(date_string, '%Y-%m-%d')
 
     return (date - x_years_ago).total_seconds() < 0
-
-
-def decide(input_file, countries_file):
-    """
-    Decides whether a traveller's entry into Kanadia should be accepted
-    :param input_file: The name of a JSON formatted file that contains
-        cases to decide
-    :param countries_file: The name of a JSON formatted file that contains
-        country data, such as whether an entry or transit visa is required,
-        and whether there is currently a medical advisory
-    :return: List of strings. Possible values of strings are:
-        "Accept", "Reject", and "Quarantine"
-    """
-
-    return ["Reject"]
 
 
 def valid_passport_format(passport_number):
@@ -120,3 +103,23 @@ def valid_date_format(date_string):
         return False
     else:
         return True
+
+def decide(input_file, countries_file):
+    """
+    Decides whether a traveller's entry into Kanadia should be accepted
+    :param input_file: The name of a JSON formatted file that contains
+        cases to decide
+    :param countries_file: The name of a JSON formatted file that contains
+        country data, such as whether an entry or transit visa is required,
+        and whether there is currently a medical advisory
+    :return: List of strings. Possible values of strings are:
+        "Accept", "Reject", and "Quarantine"
+    """
+    for visitor in visitor_record:
+        good_passport = valid_passport_format(visitor['passport'])
+        if good_passport is True:
+            print ("Accept")
+        else:
+            print ("Reject")
+
+decide(input_file, countries_file)
