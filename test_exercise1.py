@@ -24,7 +24,7 @@ STUDENTS = [["FirstName", "Surname", "IQ", "GPA"],
              ["Jayne", "Cobb", 55, 1.1],
              ["Inara", "Serra", 158, 4.0]]
 
-EMPTY_LIST = []
+EMPTY_LIST = [["FirstName", "Surname", "IQ", "GPA"]]
 
 R1 = [["Student", "Class"],
       ["Zoe", "Programming"],
