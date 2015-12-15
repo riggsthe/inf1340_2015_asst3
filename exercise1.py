@@ -59,13 +59,12 @@ class UnknownAttributeException(Exception):
 
 def filter_students(row):
     """
-    check if student represented by row has an IQ
+    Check if student represented by row has an IQ
     of at least 90 and a GPA of more than 3.4
     :param row: A List in the format:
     [{First name}, {Surname}, {IQ}, {GPA}]
     :return: True if the row satisfies the
     condition.
-    return row[-2] >= 90 and row[-1] > 3.4
     """
     return row[-2] >= 90 and row[-1] > 3.4
 
@@ -84,8 +83,9 @@ def selection(t, f):
     """
     select_table = []
 
+    # Check if table row meets the function requirements and add to the created table.
+    # If it does not satisfy the function return None.
     for row in t:
-        # Check table row satisfies function then add to created table
         if f(row) is True:
             select_table.append(row)
         else:
@@ -107,9 +107,11 @@ def projection(t, r):
     [["A", "C"], [1, 3], [4, 6]]
     """
 
+    # Establish table for projection function
     project_table = []
     location = []
-    # find attribute location
+
+    # Find attribute location in index.
     for item in range(len(r)):
         search = r[item]
         for i in range(len(t[0])):
@@ -119,14 +121,15 @@ def projection(t, r):
     if len(location) == 0:
         raise UnknownAttributeException
 
-    # Now create a new array for each line on the table
+    # Create a new array for each single line of the table based
+    # on index locations of attributes
     for i in range(len(t)):
         single_lines =[]
         line = t[i]
         for j in range(len(location)):
-            index_local = location[j]
-            info_to_grab = line[index_local]
-            single_lines.append(info_to_grab)
+            index_locale = location[j]
+            info_to_get = line[index_locale]
+            single_lines.append(info_to_get)
         project_table.append(single_lines)
 
     return project_table
@@ -142,19 +145,30 @@ def cross_product(t1, t2):
     > R2 = [["C", "D"], [5,6]]
     [["A", "B", "C", "D"], [1, 2, 5, 6], [3, 4, 5, 6]]
     """
-    # First check lists to determine if any list is empty
+
+    # First check tables to determine if any lists are empty. If empty it returns "None".
     if len(t1) and len(t2) == 0:
         print "None"
 
     else:
 
-        # Combine the headings of the table
+        # If not empty combine the headings of the table.
         column_heads = t1[0]+t2[0]
         cross_table = []
 
-        # Remove table headings
+        # Remove table headings.
         del t1[0]
         del t2[0]
+
+        for list1 in t1:
+            for list2 in t2:
+                if list2 not in list1:
+                    # For those combine the tables in a new table with headings removed from previous step.
+                    combo_table = list1 + list2
+                    cross_table.append(combo_table)
+
+        # Put headings back in the newly made table
+        cross_table.insert(0,column_heads)
 
         return cross_table
 
