@@ -70,7 +70,7 @@ def valid_passport_format(passport_number):
     :return: Boolean; True if the format is valid, False otherwise
     """
     passport_format = re.compile(r'\w\w\w\w\w-\w\w\w\w\w-\w\w\w\w\w-\w\w\w\w\w-\w\w\w\w\w')
-    passport_valid = passport_format.search(passport_number)
+    passport_valid = passport_format.match(passport_number)
     if passport_valid is None:
         return False
     else:
@@ -84,7 +84,7 @@ def valid_visa_format(visa_code):
     :return: Boolean; True if the format is valid, False otherwise
     """
     visa_format = re.compile(r'\w\w\w\w\w-\w\w\w\w\w')
-    visa_valid = visa_format.search(visa_code)
+    visa_valid = visa_format.match(visa_code)
     if visa_valid is None:
         return False
     else:
@@ -98,7 +98,7 @@ def valid_date_format(date_string):
     :return: Boolean True if the format is valid, False otherwise
     """
     date_format = re.compile(r'\d\d\d\d-\d\d-\d\d')
-    date_valid = date_format.search(date_string)
+    date_valid = date_format.match(date_string)
     if date_valid is None:
         return False
     else:
@@ -116,10 +116,12 @@ def decide(input_file, countries_file):
         "Accept", "Reject", and "Quarantine"
     """
     for visitor in visitor_record:
+
         good_passport = valid_passport_format(visitor['passport'])
         if good_passport is True:
             print ("Accept")
         else:
             print ("Reject")
+
 
 decide(input_file, countries_file)
