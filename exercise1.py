@@ -97,7 +97,7 @@ def selection(t, f):
 # Selection (STUDENTS, filter_students)
 
 
-def projection(t, r):
+def project(t, r):
     """
     Perform projection operation on table t
     using the attributes subset r.

@@ -9,7 +9,7 @@ __email__ = "ses@drsusansim.org"
 __copyright__ = "2015 Susan Sim"
 __license__ = "MIT License"
 
-from exercise1 import selection, projection, cross_product
+from exercise1 import selection, project, cross_product
 
 
 ###########
@@ -95,7 +95,8 @@ def test_project():
               ["Jayne", "Cobb"],
               ["Inara", "Serra"]]
 
-    assert is_equal(result, projection(STUDENTS, ["FirstName", "Surname"]))
+    assert is_equal(result, project(STUDENTS, ["FirstName", "Surname"]))
+
 
 def test_project_unknown_attribute_exception():
 
