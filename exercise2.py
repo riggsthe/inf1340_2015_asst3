@@ -71,7 +71,12 @@ def valid_passport_format(passport_number):
     :param passport_number: alpha-numeric string
     :return: Boolean; True if the format is valid, False otherwise
     """
-    return False
+    passport_format = re.compile(r'\w\w\w\w\w-\w\w\w\w\w-\w\w\w\w\w-\w\w\w\w\w-\w\w\w\w\w')
+    passport_valid = passport_format.search(passport_number)
+    if passport_valid is None:
+        return False
+    else:
+        return True
 
 
 def valid_visa_format(visa_code):
