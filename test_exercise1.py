@@ -109,12 +109,12 @@ def test_cross_product():
     Test cross product operation.
     """
 
-    result = [["Employee", "Department", "Department", "Head"],
-              ["Smith", "sales", "production", "Mori"],
-              ["Smith", "sales", "sales", "Brown"],
-              ["Black", "production", "production", "Mori"],
-              ["Black", "production", "sales", "Brown"],
-              ["White", "production", "production", "Mori"],
-              ["White", "production", "sales", "Brown"]]
+    result = [["Student", "Class", "Class", "Professor"],
+              ["Zoe", "Programming", "Programming", "Sim"],
+              ["Zoe", "Programming", "Web Design", "Yu"],
+              ["Jayne", "Web Design", "Web Design", "Yu"],
+              ["Jayne", "Web Design", "Programming", "Sim"],
+              ["Inara", "Programming", "Programming", "Sim"],
+              ["Inara", "Programming", "Web Design", "Yu"]]
 
     assert is_equal(result, cross_product(R1, R2))
