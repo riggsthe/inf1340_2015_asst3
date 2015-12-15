@@ -85,6 +85,12 @@ def valid_visa_format(visa_code):
     :param visa_code: alphanumeric string
     :return: Boolean; True if the format is valid, False otherwise
     """
+    visa_format = re.compile(r'\w\w\w\w\w-\w\w\w\w\w')
+    visa_valid = visa_format.search(visa_code)
+    if visa_valid is None:
+        return False
+    else:
+        return True
 
 
 def valid_date_format(date_string):
