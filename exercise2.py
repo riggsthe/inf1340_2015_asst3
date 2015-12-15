@@ -31,6 +31,14 @@ containing the following keys:
 '''
 COUNTRIES = None
 
+input_file = 'visitor_record.json'
+countries_file = 'country_record.json'
+
+with open(input_file,'r') as visitor_reader:
+    visitor_info = visitor_reader.read()
+
+with open(countries_file,'r') as country_reader:
+    country_info = country_reader.read()
 
 #####################
 # HELPER FUNCTIONS ##
