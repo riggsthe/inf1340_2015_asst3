@@ -59,7 +59,7 @@ class UnknownAttributeException(Exception):
 
 def filter_students(row):
     """
-    check if student represent by row has an IQ
+    check if student represented by row has an IQ
     of at least 90 and a GPA of more than 3.4
     :param row: A List in the format:
     [{First name}, {Surname}, {IQ}, {GPA}]
@@ -106,6 +106,7 @@ def projection(t, r):
     > projection(R, ["A", "C"])
     [["A", "C"], [1, 3], [4, 6]]
     """
+
     project_table = []
     location = []
     # find attribute location
@@ -141,17 +142,17 @@ def cross_product(t1, t2):
     > R2 = [["C", "D"], [5,6]]
     [["A", "B", "C", "D"], [1, 2, 5, 6], [3, 4, 5, 6]]
     """
-    #check list
+    # First check lists to determine if any list is empty
     if len(t1) and len(t2) == 0:
         print "None"
 
     else:
 
-    #combine head
-    column_titles = t1[0]+t2[0]
+    # Combine the headings of the table
+    column_heads = t1[0]+t2[0]
     cross_table = []
 
-    #remove head
+    # Remove table headings
     del t1[0]
     del t2[0]
 
