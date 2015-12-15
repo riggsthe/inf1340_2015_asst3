@@ -26,6 +26,10 @@ STUDENTS = [["FirstName", "Surname", "IQ", "GPA"],
 
 EMPTY_LIST = [["FirstName", "Surname", "IQ", "GPA"]]
 
+COMPLETELY_EMPTY1 = []
+
+COMPLETELY_EMPTY2 = []
+
 R1 = [["Student", "Class"],
       ["Zoe", "Programming"],
       ["Jayne", "Web Design"],
@@ -108,7 +112,10 @@ def test_empty_list_projection():
     Test projection operation when using a list that is empty.
     """
 
-    assert project(EMPTY_LIST, ["Surname"]) is None
+    try:
+        project(COMPLETELY_EMPTY1, ["Surname"])
+    except IndexError:
+        assert True
 
 
 def test_wrong_column_projection():
@@ -140,7 +147,4 @@ def test_cross_product():
 
 def test_empty_cross_product():
 
-    try:
-        cross_product(EMPTY_LIST,["Does Not Exist"])
-        except AttributeError:
-            assert True
+    assert cross_product(EMPTY_LIST, COMPLETELY_EMPTY1) is None
