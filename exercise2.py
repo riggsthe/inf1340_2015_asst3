@@ -73,8 +73,10 @@ def valid_passport_format(passport_number):
     """
     passport_format = re.compile(r'\w\w\w\w\w-\w\w\w\w\w-\w\w\w\w\w-\w\w\w\w\w-\w\w\w\w\w')
     passport_valid = passport_format.search(passport_number)
-    
-    return False
+    if passport_valid is None:
+        return False
+    else:
+        return True
 
 
 def valid_visa_format(visa_code):
