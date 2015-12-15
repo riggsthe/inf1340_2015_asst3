@@ -119,7 +119,7 @@ def project(t, r):
             if search == title:
                 location.append(i)
     if len(location) == 0:
-        raise UnknownAttributeException
+        raise AttributeError
 
     # Create a new array for each single line of the table based
     # on index locations of attributes
