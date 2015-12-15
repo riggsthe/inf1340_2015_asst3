@@ -31,16 +31,21 @@ containing the following keys:
 '''
 COUNTRIES = None
 
-input_file = 'visitor_record.json'
-countries_file = 'country_record.json'
+input_file = 'json/visitor_record.json'
+countries_file = 'json/country_record.json'
 
 with open(input_file,'r') as visitor_reader:
     visitor_info = visitor_reader.read()
     visitor_record = json.loads(visitor_info)
+print json.dumps(visitor_record, indent=1)
+
 
 with open(countries_file,'r') as country_reader:
     country_info = country_reader.read()
     country_record = json.loads(country_info)
+print json.dumps(country_record, indent=1)
+
+
 
 #####################
 # HELPER FUNCTIONS ##
