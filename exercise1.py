@@ -141,6 +141,19 @@ def cross_product(t1, t2):
     > R2 = [["C", "D"], [5,6]]
     [["A", "B", "C", "D"], [1, 2, 5, 6], [3, 4, 5, 6]]
     """
+    #check list
+    if len(t1) and len(t2) == 0:
+        print "None"
 
-    return []
+    else:
+
+    #combine head
+    column_titles = t1[0]+t2[0]
+    cross_table = []
+
+    #remove head
+    del t1[0]
+    del t2[0]
+
+    return cross_table
 
