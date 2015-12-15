@@ -99,5 +99,9 @@ def valid_date_format(date_string):
     :param date_string: date to be checked
     :return: Boolean True if the format is valid, False otherwise
     """
-
-    return False
+    date_format = re.compile(r'\d\d\d\d-\d\d-\d\d')
+    date_valid = date_format.search(date_string)
+    if date_valid is None:
+        return False
+    else:
+        return True
