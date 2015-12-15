@@ -103,6 +103,23 @@ def test_project():
     assert is_equal(result, project(STUDENTS, ["FirstName", "Surname"]))
 
 
+def test_empty_list_projection():
+    """
+    Test projection operation when using a list that is empty.
+    """
+
+
+def test_wrong_column_projection():
+    """
+    Test the projection operation when faced with a column head that did not exist, i.e. an
+    Unknown Attribute.
+    """
+    try:
+        project(EMPTY_LIST, ["Does Not Exist"])
+    except AttributeError:
+        assert True
+
+
 def test_cross_product():
     """
     Test cross product operation.
