@@ -78,11 +78,6 @@ def test_selection():
     assert is_equal(result, selection(STUDENTS, filter_students))
 
 
-def test_selection_empty():
-    assert selection(STUDENTS_EMPTY, filter_students) is\
-        None
-
-
 def test_project():
     """
     Test the projection operation.
@@ -96,13 +91,6 @@ def test_project():
               ["Inara", "Serra"]]
 
     assert is_equal(result, project(STUDENTS, ["FirstName", "Surname"]))
-
-
-def test_project_unknown_attribute():
-    """
-    Test if attributes are not found on table.
-    """
-    assert project(STUDENTS, ["Does Not Exist"]) == AttributeError
 
 
 def test_cross_product():
