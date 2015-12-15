@@ -134,3 +134,11 @@ def test_cross_product():
               ["Inara", "Programming", "Web Design", "Yu"]]
 
     assert is_equal(result, cross_product(R1, R2))
+
+
+def test_empty_cross_product():
+
+    try:
+        cross_product(EMPTY_LIST,["Does Not Exist"])
+        except AttributeError:
+            assert True
