@@ -133,6 +133,9 @@ def decide(input_file, countries_file):
             else:
                 print ("Reject")
 
+        else:
+            print("Reject")
+
 
 
 
