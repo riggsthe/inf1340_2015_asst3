@@ -79,6 +79,7 @@ def test_selection():
               ["Zoe", "Washburne", 110, 3.5],
               ["Inara", "Serra", 158, 4.0]]
 
+
     assert is_equal(result, selection(STUDENTS, filter_students))
 
 
@@ -105,6 +106,18 @@ def test_project():
               ["Inara", "Serra"]]
 
     assert is_equal(result, project(STUDENTS, ["FirstName", "Surname"]))
+
+    result = [["FirstName" "class"],
+              ["Zoe", "Programming"],
+              ["Jayne", "Web Design"],
+              ["Inara", "Programming"]]
+
+    result = [["Surname","FirstName"],
+              ["Washburne", "Hoban"],
+              ["Washburne", "Zoe"],
+              ["Reynolds", "Malcolm"],
+              ["Cobb", "Jayne"],
+              ["Serra", "Inara"]]
 
 
 def test_empty_list_projection():

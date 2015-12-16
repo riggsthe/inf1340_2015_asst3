@@ -24,7 +24,7 @@ R1 = [["Student", "Class"],
     ["Jayne", "Web Design"],
     ["Inara", "Programming"]]
 
-R2 =  [["Class", "Professor"],
+R2 = [["Class", "Professor"],
     ["Programming", "Sim"],
     ["Web Design", "Yu"]]
 
