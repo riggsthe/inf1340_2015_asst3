@@ -167,23 +167,23 @@ def decide(input_file, countries_file):
         if visitor_values != REQUIRED_FIELDS:
             decision.append("Reject")
 
-        known_locations = valid_country(visitor,country_record)
-        if visitor["home"]["country"] != "KAN" and known_locations is False:
-            decision.append("Reject")
+        else:
+            advisory = valid_health(visitor,country_record)
+            if advisory is True:
+                decision.append("Quarantine")
 
-        if visitor["home"]["country"] == "KAN":
-            decision.append("Accept")
+            known_locations = valid_country(visitor,country_record)
+            if visitor["home"]["country"] != "KAN" and known_locations is False:
+                decision.append("Reject")
 
-        if visitor["entry_reason"] == "visit":
-            if valid_date_format(visitor["visa"]["date"]):
-                if visa_expiration(visitor["visa"]["date"]):
-                    decision.append("Reject")
-
-        advisory = valid_health(visitor,country_record)
-        if advisory is True:
-            decision.append("Quarantine")
-
-
+            elif visitor["home"]["country"] == "KAN":
+                decision.append("Accept")
+            else:
+                purpose_of_visit = valid_reason(visitor,country_record)
+                if purpose_of_visit:
+                    if valid_date_format(visitor["visa"]["date"]):
+                        if visa_expiration(visitor["visa"]["date"]):
+                            decision.append("Reject")
 
 
     print decision
