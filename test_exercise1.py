@@ -56,12 +56,12 @@ def is_equal(t1, t2):
 #####################
 def filter_students(row):
     """
-    Check if Student represented by row
-    is AT LEAST 30 years old and makes
-    MORE THAN 3500.
+    Check if student represented by row has an IQ
+    of at least 90 and a GPA of more than 3.4
     :param row: A List in the format:
-        [{Surname}, {FirstName}, {Age}, {Salary}]
-    :return: True if the row satisfies the condition.
+    [{First name}, {Surname}, {IQ}, {GPA}]
+    :return: True if the row satisfies the
+    condition.
     """
     return row[-2] >= 90 and row[-1] > 3.4
 
