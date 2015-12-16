@@ -107,18 +107,6 @@ def test_project():
 
     assert is_equal(result, project(STUDENTS, ["FirstName", "Surname"]))
 
-    result = [["FirstName" "class"],
-              ["Zoe", "Programming"],
-              ["Jayne", "Web Design"],
-              ["Inara", "Programming"]]
-
-    result = [["Surname","FirstName"],
-              ["Washburne", "Hoban"],
-              ["Washburne", "Zoe"],
-              ["Reynolds", "Malcolm"],
-              ["Cobb", "Jayne"],
-              ["Serra", "Inara"]]
-
 
 def test_empty_list_projection():
     """
