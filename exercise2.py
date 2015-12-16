@@ -110,12 +110,17 @@ def valid_date_format(date_string):
     else:
         return True
 
-def valid_country(visitor_country, country_record):
-    if visitor_country["home"]["country"] in country_record.keys() and visitor_country["from"]["country"] in country_record.keys():
+def valid_country(visitor, country_record):
+    if visitor["home"]["country"] in country_record.keys() and visitor["from"]["country"] in country_record.keys():
         return True
     else:
         return False
 
+def valid_health(visitor,country_record):
+    if visitor["from"]["country"]["medical advisory"] == "":
+        return True
+    else:
+        return False
 
 def decide(input_file, countries_file):
     """
@@ -150,7 +155,6 @@ def decide(input_file, countries_file):
 
         else:
             print("Reject")
-
 
 
 
