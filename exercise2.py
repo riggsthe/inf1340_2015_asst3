@@ -130,6 +130,15 @@ def valid_visa(visitor, country_record):
         else:
             return False
 
+def valid_reason(visitor,country_record):
+    if visitor["entry_reason"] == "visit":
+        visa_required = valid_visa(visitor,country_record)
+        if visa_required == 1:
+            return True
+        else:
+            return False
+
+
 def decide(input_file, countries_file):
     """
     Decides whether a traveller's entry into Kanadia should be accepted
