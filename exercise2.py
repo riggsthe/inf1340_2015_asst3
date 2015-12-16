@@ -62,6 +62,7 @@ def is_more_than_x_years_ago(x, date_string):
     return (date - x_years_ago).total_seconds() < 0
 
 def visa_expiration(date_string):
+
     now = datetime.datetime.now()
     two = now.replace(year=now.year - 2)
     date = datetime.datetime.strptime(date_string, '%Y-%m-%d')
@@ -121,6 +122,11 @@ def decide(input_file, countries_file):
         "Accept", "Reject", and "Quarantine"
     """
     for visitor in visitor_record:
+        visitor_values = []
+        for field_value in REQUIRED_FIELDS:
+            if field_value in visitor.keys():
+                visitor_values.append(field_value)
+                print visitor_values
 
         good_passport = valid_passport_format(visitor['passport'])
         if good_passport is True:
