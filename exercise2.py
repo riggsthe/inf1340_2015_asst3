@@ -61,13 +61,6 @@ def is_more_than_x_years_ago(x, date_string):
     date = datetime.datetime.strptime(date_string, '%Y-%m-%d')
     return (date - x_years_ago).total_seconds() < 0
 
-def visa_expiration(date_string):
-
-    now = datetime.datetime.now()
-    two = now.replace(year=now.year - 2)
-    date = datetime.datetime.strptime(date_string, '%Y-%m-%d')
-    return (date - two).total_seconds() < 0
-
 
 def valid_passport_format(passport_number):
     """
@@ -78,20 +71,6 @@ def valid_passport_format(passport_number):
     passport_format = re.compile(r'\w\w\w\w\w-\w\w\w\w\w-\w\w\w\w\w-\w\w\w\w\w-\w\w\w\w\w')
     passport_valid = passport_format.match(passport_number)
     if passport_valid is None:
-        return False
-    else:
-        return True
-
-
-def valid_visa_format(visa_code):
-    """
-    Checks whether a visa code is two groups of five alphanumeric characters
-    :param visa_code: alphanumeric string
-    :return: Boolean; True if the format is valid, False otherwise
-    """
-    visa_format = re.compile(r'\w\w\w\w\w-\w\w\w\w\w')
-    visa_valid = visa_format.match(visa_code)
-    if visa_valid is None:
         return False
     else:
         return True
@@ -110,17 +89,6 @@ def valid_date_format(date_string):
     else:
         return True
 
-def valid_country(visitor, country_record):
-    if visitor["home"]["country"] in country_record.keys() and visitor["from"]["country"] in country_record.keys():
-        return True
-    else:
-        return False
-
-def valid_health(visitor,country_record):
-    if visitor["from"]["country"]["medical advisory"] == "":
-        return True
-    else:
-        return False
 
 def valid_visa(visitor, country_record):
     if visitor["home"]["country"] in country_record.keys():
@@ -129,6 +97,41 @@ def valid_visa(visitor, country_record):
             return True
         else:
             return False
+
+def valid_visa_format(visa_code):
+    """
+    Checks whether a visa code is two groups of five alphanumeric characters
+    :param visa_code: alphanumeric string
+    :return: Boolean; True if the format is valid, False otherwise
+    """
+    visa_format = re.compile(r'\w\w\w\w\w-\w\w\w\w\w')
+    visa_valid = visa_format.match(visa_code)
+    if visa_valid is None:
+        return False
+    else:
+        return True
+
+def visa_expiration(date_string):
+
+    now = datetime.datetime.now()
+    two = now.replace(year=now.year - 2)
+    date = datetime.datetime.strptime(date_string, '%Y-%m-%d')
+    return (date - two).total_seconds() < 0
+
+
+def valid_country(visitor, country_record):
+    if visitor["home"]["country"] in country_record.keys() and visitor["from"]["country"] in country_record.keys():
+        return True
+    else:
+        return False
+
+
+def valid_health(visitor,country_record):
+    if visitor["from"]["country"]["medical advisory"] == "":
+        return True
+    else:
+        return False
+
 
 def valid_reason(visitor,country_record):
     if visitor["entry_reason"] == "visit":
