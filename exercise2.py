@@ -89,6 +89,23 @@ def valid_date_format(date_string):
     else:
         return True
 
+def valid_form(visitor):
+    for visitor in visitor_record:
+        visitor_values = []
+        for field_value in REQUIRED_FIELDS:
+            if field_value in visitor.keys():
+                visitor_values.append(field_value)
+
+        if visitor_values != REQUIRED_FIELDS:
+            return False
+        else:
+            return True
+
+def valid_passport_and_date(visitor,country_record):
+    if valid_passport_format(visitor["passport"]) and valid_date_format(visitor["birth_date"]):
+        return True
+    else:
+        return False
 
 def valid_visa(visitor, country_record):
     if visitor["home"]["country"] in country_record.keys():
@@ -159,18 +176,18 @@ def decide(input_file, countries_file):
     decision = []
 
     for visitor in visitor_record:
-        visitor_values = []
-        for field_value in REQUIRED_FIELDS:
-            if field_value in visitor.keys():
-                visitor_values.append(field_value)
-
-        if visitor_values != REQUIRED_FIELDS:
+        if not valid_form:
             decision.append("Reject")
 
         else:
+
             advisory = valid_health(visitor,country_record)
             if advisory is True:
                 decision.append("Quarantine")
+
+            good_passport = valid_passport_format(visitor["passport"])
+            if good_passport is False:
+                decision.append("Reject")
 
             known_locations = valid_country(visitor,country_record)
             if visitor["home"]["country"] != "KAN" and known_locations is False:
