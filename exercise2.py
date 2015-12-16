@@ -101,11 +101,13 @@ def valid_form(visitor):
         else:
             return True
 
+
 def valid_passport_and_date(visitor,country_record):
     if valid_passport_format(visitor["passport"]) and valid_date_format(visitor["birth_date"]):
         return True
     else:
         return False
+
 
 def valid_visa(visitor, country_record):
     if visitor["home"]["country"] in country_record.keys():
@@ -114,6 +116,7 @@ def valid_visa(visitor, country_record):
             return True
         else:
             return False
+
 
 def valid_visa_format(visa_code):
     """
@@ -127,6 +130,7 @@ def valid_visa_format(visa_code):
         return False
     else:
         return True
+
 
 def visa_expiration(date_string):
 
