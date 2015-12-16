@@ -4,10 +4,9 @@
 Computer-based immigration office for Kanadia
 """
 
-__author__ = 'Susan Sim'
-__email__ = "ses@drsusansim.org"
-__copyright__ = "2015 Susan Sim"
-__license__ = "MIT License"
+__author__ = 'Farid Gassanov, Dusan Miletic, Tessie Riggs'
+__email__ = "farid.gassanov@mail.utoronto.ca, dusan.miletic@utoronto.ca, tessie.riggs@gmail.com"
+__copyright__ = "2015 Farid Gassanov, Dusan Miletic, Tessie Riggs"
 
 import re
 import datetime
