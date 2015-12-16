@@ -64,7 +64,7 @@ def is_more_than_x_years_ago(x, date_string):
 
 def valid_passport_format(passport_number):
     """
-    Checks whether a pasport number is five sets of five alpha-number characters separated by dashes
+    Checks whether a passport number is five sets of five alpha-number characters separated by dashes
     :param passport_number: alpha-numeric string
     :return: Boolean; True if the format is valid, False otherwise
     """
@@ -201,7 +201,6 @@ def decide(input_file, countries_file):
                     if valid_date_format(visitor["visa"]["date"]):
                         if visa_expiration(visitor["visa"]["date"]):
                             decision.append("Reject")
-
 
     print decision
 
