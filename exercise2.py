@@ -126,13 +126,12 @@ def decide(input_file, countries_file):
         for field_value in REQUIRED_FIELDS:
             if field_value in visitor.keys():
                 visitor_values.append(field_value)
-                print visitor_values
-
-        good_passport = valid_passport_format(visitor['passport'])
-        if good_passport is True:
-            print ("Accept")
-        else:
-            print ("Reject")
+        if visitor_values == REQUIRED_FIELDS:
+            good_passport = valid_passport_format(visitor['passport'])
+            if good_passport is True:
+                print ("Accept")
+            else:
+                print ("Reject")
 
 
 
