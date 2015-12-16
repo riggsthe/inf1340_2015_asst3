@@ -79,7 +79,6 @@ def test_selection():
               ["Zoe", "Washburne", 110, 3.5],
               ["Inara", "Serra", 158, 4.0]]
 
-
     assert is_equal(result, selection(STUDENTS, filter_students))
 
 
@@ -148,7 +147,7 @@ def test_cross_product():
 
 def test_empty_cross_product():
     """
-    Test cross product operation if uses on empty lists. 
+    Test cross product operation if uses on empty lists.
     """
 
     assert cross_product(EMPTY_LIST, COMPLETELY_EMPTY1) is None
