@@ -159,5 +159,8 @@ def test_cross_product():
 
 
 def test_empty_cross_product():
+    """
+    Test cross product operation if uses on empty lists. 
+    """
 
     assert cross_product(EMPTY_LIST, COMPLETELY_EMPTY1) is None
