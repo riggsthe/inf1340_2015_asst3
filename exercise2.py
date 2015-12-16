@@ -122,6 +122,14 @@ def valid_health(visitor,country_record):
     else:
         return False
 
+def valid_visa(visitor, country_record):
+    if visitor["home"]["country"] in country_record.keys():
+        country_code = visitor["home"]["country"]
+        if country_record[country_code]["visitor_visa_required"] == 1:
+            return True
+        else:
+            return False
+
 def decide(input_file, countries_file):
     """
     Decides whether a traveller's entry into Kanadia should be accepted
