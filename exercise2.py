@@ -110,6 +110,13 @@ def valid_date_format(date_string):
     else:
         return True
 
+def valid_country(visitor_country, country_record):
+    if visitor_country["home"]["country"] in country_record.keys() and visitor_country["from"]["country"] in country_record.keys():
+        return True
+    else:
+        return False
+
+
 def decide(input_file, countries_file):
     """
     Decides whether a traveller's entry into Kanadia should be accepted
@@ -126,6 +133,7 @@ def decide(input_file, countries_file):
         for field_value in REQUIRED_FIELDS:
             if field_value in visitor.keys():
                 visitor_values.append(field_value)
+
         if visitor_values == REQUIRED_FIELDS:
             good_passport = valid_passport_format(visitor['passport'])
             if good_passport is True:
@@ -135,6 +143,10 @@ def decide(input_file, countries_file):
 
             if visitor["home"]["country"] == "KAN":
                 print ("Accept")
+            else:
+                country_check = valid_country(visitor, country_record)
+                if country_check is False:
+                    print ("Reject")
 
         else:
             print("Reject")
