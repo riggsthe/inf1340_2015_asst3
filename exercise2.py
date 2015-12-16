@@ -153,6 +153,8 @@ def decide(input_file, countries_file):
     :return: List of strings. Possible values of strings are:
         "Accept", "Reject", and "Quarantine"
     """
+    decision = []
+
     for visitor in visitor_record:
         visitor_values = []
         for field_value in REQUIRED_FIELDS:
@@ -162,20 +164,21 @@ def decide(input_file, countries_file):
         if visitor_values == REQUIRED_FIELDS:
             good_passport = valid_passport_format(visitor['passport'])
             if good_passport is True:
-                print ("Accept")
+                decision.append("Accept")
             else:
-                print ("Reject")
+                decision.append("Reject")
 
             if visitor["home"]["country"] == "KAN":
-                print ("Accept")
+                decision.append("Accept")
             else:
                 country_check = valid_country(visitor, country_record)
                 if country_check is False:
-                    print ("Reject")
+                    decision.append("Reject")
 
         else:
-            print("Reject")
+            decision.append("Reject")
 
+    print decision
 
 
 decide(input_file, countries_file)
