@@ -176,7 +176,7 @@ def decide(input_file, countries_file):
     decision = []
 
     for visitor in visitor_record:
-        if not valid_form:
+        if not valid_form or not valid_passport_and_date:
             decision.append("Reject")
 
         else:
