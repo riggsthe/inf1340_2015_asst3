@@ -157,6 +157,12 @@ def valid_country(visitor, country_record):
 
 
 def valid_health(visitor,country_record):
+    """
+    Checks whether country has any health advisories
+    :param visitor: information presented to be checked
+    :param country_record: information from the ministry to be checked against
+    :return: Boolean True if country is known as a health hazard to the ministry, False otherwise
+    """
     if visitor["from"]["country"] in country_record.keys():
         if country_record[visitor["from"]["country"]]["medical_advisory"] != "":
             return True
@@ -167,6 +173,12 @@ def valid_health(visitor,country_record):
 
 
 def valid_reason(visitor,country_record):
+    """
+    Checks whether visa required if reason is visit
+    :param visitor: information to be checked
+    :param country_record: information to be checked against
+    :return: Boolean True if visitor required to have a visa, False otherwise
+    """
     if visitor["entry_reason"] == "visit":
         visa_required = valid_visa(visitor,country_record)
         if visa_required == 1:
@@ -175,6 +187,11 @@ def valid_reason(visitor,country_record):
             return False
 
 def valid_kanadian(visitor):
+    """
+    Checks whether traveller is a fellow Kanadarian
+    :param visitor: information to be checked
+    :return: Boolean True if traveller indicated he is returning home and his home is Kanadia, False otherwise
+    """
     if visitor["entry_reason"] == "returning" and visitor["home"]["country"] == "KAN":
         return True
     else:
