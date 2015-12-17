@@ -198,6 +198,8 @@ def decide(input_file, countries_file):
         else:
             decision.append("Accept")
 
+
     print decision
+
 
 decide('json/visitor_record.json','json/country_record.json')
