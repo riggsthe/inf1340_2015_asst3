@@ -50,7 +50,7 @@ def is_more_than_x_years_ago(x, date_string):
 
 def valid_passport_format(passport_number):
     """
-    Checks whether a pasport number is five sets of five alpha-number characters separated by dashes
+    Checks whether a passport number is five sets of five alpha-number characters separated by dashes
     :param passport_number: alpha-numeric string
     :return: Boolean; True if the format is valid, False otherwise
     """
@@ -93,12 +93,24 @@ def valid_form(visitor_record):
             return True
 
 def valid_passport_and_date(visitor,country_record):
+    """
+    Checks passport and birthdate are valid
+    :param visitor: information to be checked
+    :param country_record: information to be checked
+    :return: Boolean True if passport is good and birth date is valid format, False otherwise
+    """
     if valid_passport_format(visitor["passport"]) and valid_date_format(visitor["birth_date"]):
         return True
     else:
         return False
 
 def valid_visa(visitor, country_record):
+    """
+    Checks whether foreigners required to have visa
+    :param visitor: information to be checked
+    :param country_record: information to be checked
+    :return: Boolean True if visa required, False otherwise
+    """
     if visitor["home"]["country"] in country_record.keys() and not "KAN":
         country_code = visitor["home"]["country"]
         if country_record[country_code]["visitor_visa_required"] == 1:
@@ -120,7 +132,11 @@ def valid_visa_format(visa_code):
         return True
 
 def visa_expiration(date_string):
-
+    """
+    Checks if visa is older than 2 years
+    :param date_string: information to be checked
+    :return: true if visa expired
+    """
     now = datetime.datetime.now()
     two = now.replace(year=now.year - 2)
     date = datetime.datetime.strptime(date_string, '%Y-%m-%d')
@@ -128,6 +144,12 @@ def visa_expiration(date_string):
 
 
 def valid_country(visitor, country_record):
+    """
+    Checks whether country is known to the ministry
+    :param visitor: information to be checked
+    :param country_record: information to be checked against
+    :return: Boolean True if country is known to the ministry, False otherwise
+    """
     if visitor["home"]["country"] in country_record.keys() and visitor["from"]["country"] in country_record.keys():
         return True
     else:
