@@ -24,13 +24,19 @@ def test_returning():
         ["Accept", "Accept", "Quarantine"]
 
 def test_quarantine():
-
+    """
+    Quarantine traveller
+    """
     assert decide("test_quarantine.json","countries.json") == ["Quarantine"]
 
 def test_visa():
-
+    """
+    Expired visa traveller
+    """
     assert decide("test_visa.json","countries.json") == ["Reject"]
 
 def test_country():
-
+    """
+   Non existent country traveller
+    """
     assert decide("test_country.json","countries.json") == ["Reject"]
