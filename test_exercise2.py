@@ -11,7 +11,7 @@ __status__ = "Prototype"
 # imports one per line
 import pytest
 import os
-from exercise2 import decide
+from exercise2 import *
 
 DIR = "test_jsons/"
 os.chdir(DIR)

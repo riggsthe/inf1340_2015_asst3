@@ -4,9 +4,10 @@
 Computer-based immigration office for Kanadia
 """
 
-__author__ = 'Farid Gassanov, Dusan Miletic, Tessie Riggs'
-__email__ = "farid.gassanov@mail.utoronto.ca, dusan.miletic@utoronto.ca, tessie.riggs@gmail.com"
-__copyright__ = "2015 Farid Gassanov, Dusan Miletic, Tessie Riggs"
+__author__ = 'Susan Sim'
+__email__ = "ses@drsusansim.org"
+__copyright__ = "2015 Susan Sim"
+__license__ = "MIT License"
 
 import re
 import datetime
@@ -30,20 +31,6 @@ containing the following keys:
 '''
 COUNTRIES = None
 
-input_file = 'json/visitor_record.json'
-countries_file = 'json/country_record.json'
-
-with open(input_file,'r') as visitor_reader:
-    visitor_info = visitor_reader.read()
-    visitor_record = json.loads(visitor_info)
-
-
-with open(countries_file,'r') as country_reader:
-    country_info = country_reader.read()
-    country_record = json.loads(country_info)
-
-
-
 #####################
 # HELPER FUNCTIONS ##
 #####################
@@ -63,7 +50,7 @@ def is_more_than_x_years_ago(x, date_string):
 
 def valid_passport_format(passport_number):
     """
-    Checks whether a passport number is five sets of five alpha-number characters separated by dashes
+    Checks whether a pasport number is five sets of five alpha-number characters separated by dashes
     :param passport_number: alpha-numeric string
     :return: Boolean; True if the format is valid, False otherwise
     """
@@ -100,13 +87,11 @@ def valid_form(visitor):
         else:
             return True
 
-
 def valid_passport_and_date(visitor,country_record):
     if valid_passport_format(visitor["passport"]) and valid_date_format(visitor["birth_date"]):
         return True
     else:
         return False
-
 
 def valid_visa(visitor, country_record):
     if visitor["home"]["country"] in country_record.keys():
@@ -115,7 +100,6 @@ def valid_visa(visitor, country_record):
             return True
         else:
             return False
-
 
 def valid_visa_format(visa_code):
     """
@@ -129,7 +113,6 @@ def valid_visa_format(visa_code):
         return False
     else:
         return True
-
 
 def visa_expiration(date_string):
 
@@ -164,6 +147,11 @@ def valid_reason(visitor,country_record):
         else:
             return False
 
+def valid_kanadian(visitor):
+    if visitor["entry_reason"] == "returning" and visitor["home"]["country"] == "KAN":
+        return True
+    else:
+        return False
 
 def decide(input_file, countries_file):
     """
@@ -176,36 +164,40 @@ def decide(input_file, countries_file):
     :return: List of strings. Possible values of strings are:
         "Accept", "Reject", and "Quarantine"
     """
+
+    with open(input_file,"r") as visitor_reader:
+        visitor_info = visitor_reader.read()
+        visitor_record = json.loads(visitor_info)
+
+
+    with open(countries_file,"r") as country_reader:
+        country_info = country_reader.read()
+        country_record = json.loads(country_info)
+
     decision = []
 
     for visitor in visitor_record:
-        if not valid_form or not valid_passport_and_date:
-            decision.append("Reject")
-
-        else:
-
+        if valid_form and valid_passport_and_date:
             advisory = valid_health(visitor,country_record)
-            if advisory is True:
-                decision.append("Quarantine")
-
             good_passport = valid_passport_format(visitor["passport"])
-            if good_passport is False:
-                decision.append("Reject")
-
             known_locations = valid_country(visitor,country_record)
-            if visitor["home"]["country"] != "KAN" and known_locations is False:
-                decision.append("Reject")
+            purpose_of_visit = valid_reason(visitor,country_record)
 
-            elif visitor["home"]["country"] == "KAN":
+            if advisory:
+                decision.append("Quarantine")
+            elif not good_passport:
+                decision.append("Reject")
+            elif known_locations:
+                decision.append("Reject")
+            elif purpose_of_visit:
+                decision.append("Reject")
+            elif valid_kanadian:
                 decision.append("Accept")
             else:
-                purpose_of_visit = valid_reason(visitor,country_record)
-                if purpose_of_visit:
-                    if valid_date_format(visitor["visa"]["date"]):
-                        if visa_expiration(visitor["visa"]["date"]):
-                            decision.append("Reject")
+                decision.append("Accept")
+        else:
+            decision.append("Accept")
 
     print decision
 
-
-decide(input_file, countries_file)
+decide('json/visitor_record.json','json/country_record.json')
