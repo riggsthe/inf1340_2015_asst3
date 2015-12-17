@@ -76,6 +76,11 @@ def valid_date_format(date_string):
         return True
 
 def valid_form(visitor_record):
+    """
+    Checks whether form contains all required fields
+    :param visitor_record: information to be checked
+    :return: Boolean True if presented info contains fields from REQUIRED_FIELDS constant, False otherwise
+    """
     for visitor in visitor_record:
         visitor_values = []
         for field_value in REQUIRED_FIELDS:
